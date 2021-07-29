@@ -7,6 +7,7 @@ use App\Models\Subscriber;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request;
 
 class LandingPage extends Component
 {
@@ -17,6 +18,12 @@ class LandingPage extends Component
     protected $rules = [
         'email' => 'required|email:filter|unique:subscribers,email',
     ];
+
+    public function mount(Request $request){
+        if($request->has('verified') && $request->verified == 1) {
+            $this->showSuccess = 'true';
+        }
+    }
 
     public function subscribe(){
         $this->validate();
