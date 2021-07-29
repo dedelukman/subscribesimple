@@ -6,7 +6,7 @@
         }"
         >
         <nav class="flex pt-5 justify-between container mx-auto text-indigo-200">
-            <a href="/">
+            <a class="text-4xl font-bold" href="/">
                 <x-application-logo class="w-16 h-16 fill-current"></x-application-logo>
             </a>
 
