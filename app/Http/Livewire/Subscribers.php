@@ -12,6 +12,10 @@ class Subscribers extends Component
 
     public $search;
 
+    protected $queryString = [
+        'search' => ['except' => '']
+    ];
+
     public function delete(Subscriber $subscriber){
         $subscriber->delete();
     }
