@@ -18,10 +18,27 @@
                         </div>
 
                     @else
-                        <table>
-                            @dd($subscribers)
+                        <table class="w-full">
+                            <thead class=" border-b-2 border-gray-300 text-indigo-600">
+                                <tr>
+                                    <th class="px-6 py-3 text-left">Email</th>
+                                    <th class="px-6 py-3 text-left">Verified</th>
+                                    <th class="px-6 py-3 text-left">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ( $subscribers as $subscriber )
+                                    <tr class="text-sm text-indigo-900 border-b border-gray-400">
+                                        <th  class="px-6 py-3 text-left">{{ $subscriber->email}}</th>
+                                        <th class="px-6 py-3 text-left">{{ optional($subscriber->email_verified_at)->diffForHumans() ?? 'Never'}}</th>
+                                        <th  class="px-6 py-3 text-left"></th>
+                                    </tr>
+                                @endforeach
+                            </tbody>
 
                         </table>
+
+                        <div class="px-3 py-3">{{ $subscribers->links() }}</div>
                         
                     @endif
                 </div>

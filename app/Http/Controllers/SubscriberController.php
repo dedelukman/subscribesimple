@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subscriber;
+use Illuminate\Support\Facades\DB;
 
 class SubscriberController extends Controller
 {
@@ -15,6 +16,6 @@ class SubscriberController extends Controller
     }
 
     public function all(){
-        return view('subscribers.all')->with(['subscribers' => Subscriber::all()]);
+        return view('subscribers.all')->with(['subscribers' => Subscriber::paginate(10)]);
     }
 }
